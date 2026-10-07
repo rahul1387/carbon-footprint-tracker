@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Add Activity | CarbonTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<header class="site-header">
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            🌱 <span>CarbonTrack</span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="history.html">
+                History
+            </a>
+
+            <a
+                href="add-activity.html"
+                class="active">
+
+                Add Activity
+
+            </a>
+
+            <a href="recommendations.html">
+                Reduce Footprint
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="dashboard.html"
+                class="btn btn-outline">
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container add-activity-page">
+
+
+    <section class="page-heading">
+
+        <div>
+
+            <span class="section-tag">
+                TRACK YOUR IMPACT
+            </span>
+
+            <h1>
+                Add an Activity
+            </h1>
+
+            <p>
+                Record an everyday activity and estimate its
+                associated carbon emissions.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <section class="activity-layout">
+
+
+        <!-- FORM -->
+
+        <div class="activity-form-card">
+
+            <h2>
+                Activity Details
+            </h2>
+
+
+            <div class="form-group">
+
+                <label>
+                    Category
+                </label>
+
+
+                <div class="category-selector">
+
+                    <button
+                        type="button"
+                        class="category-btn active"
+                        data-category="transport">
+
+                        🚗
+                        <span>Transport</span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="food">
+
+                        🍔
+                        <span>Food</span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="shopping">
+
+                        🛍️
+                        <span>Shopping</span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="category-btn"
+                        data-category="other">
+
+                        ⚡
+                        <span>Other</span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="activityType">
+                    Activity Type
+                </label>
+
+                <select
+                    id="activityType"
+                    class="form-input">
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="quantity">
+                    Quantity
+                </label>
+
+                <div class="quantity-input">
+
+                    <input
+                        type="number"
+                        id="quantity"
+                        class="form-input"
+                        min="0"
+                        step="0.01"
+                        placeholder="Enter quantity">
+
+                    <span id="quantityUnit">
+                        km
+                    </span>
+
+                </div>
+
+                <small id="quantityInfo">
+                    Enter distance in kilometres.
+                </small>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="activityDate">
+                    Date
+                </label>
+
+                <input
+                    type="date"
+                    id="activityDate"
+                    class="form-input">
+
+            </div>
+
+
+            <button
+                type="button"
+                id="calculateBtn"
+                class="btn btn-primary btn-large">
+
+                Calculate Footprint
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div class="calculation-result"
+             id="calculationResult">
+
+            <div class="result-placeholder">
+
+                <div>
+                    🌱
+                </div>
+
+                <h2>
+                    Your Result
+                </h2>
+
+                <p>
+                    Enter your activity details and click
+                    Calculate Footprint.
+                </p>
+
+            </div>
+
+
+            <div
+                class="result-content"
+                id="resultContent"
+                style="display:none;">
+
+                <span class="section-tag">
+                    ESTIMATED IMPACT
+                </span>
+
+                <div class="result-number">
+
+                    <strong id="resultEmission">
+                        0
+                    </strong>
+
+                    <span>
+                        kg CO₂e
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="range-result"
+                    id="rangeResult"
+                    style="display:none;">
+
+                    Estimated range:
+                    <strong id="resultRange">
+                        0–0 kg
+                    </strong>
+
+                </div>
+
+
+                <div class="result-details">
+
+                    <div>
+
+                        <span>
+                            Activity
+                        </span>
+
+                        <strong id="resultActivity">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Quantity
+                        </span>
+
+                        <strong id="resultQuantity">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Emission Factor
+                        </span>
+
+                        <strong id="resultFactor">
+                            —
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="result-actions">
+
+                    <button
+                        type="button"
+                        id="saveActivityBtn"
+                        class="btn btn-primary">
+
+                        Save Activity
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="calculateAgainBtn"
+                        class="btn btn-outline">
+
+                        Calculate Again
+
+                    </button>
+
+                </div>
+
+
+                <p class="estimate-note">
+
+                    ⚠️ This is an estimated CO₂e value based on
+                    reference emission factors. Actual emissions
+                    may vary.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <a href="index.html" class="logo">
+                🌱 <span>CarbonTrack</span>
+            </a>
+
+            <p>
+                Track your choices. Understand your impact.
+                Reduce your footprint.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="history.html">
+                History
+            </a>
+
+            <a href="add-activity.html">
+                Add Activity
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/calculations.js"></script>
+<script src="js/activity.js"></script>
+
+</body>
+
+</html>

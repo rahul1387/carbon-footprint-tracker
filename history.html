@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>History | CarbonTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<header class="site-header">
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            🌱 <span>CarbonTrack</span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a
+                href="history.html"
+                class="active">
+
+                History
+
+            </a>
+
+            <a href="add-activity.html">
+                Add Activity
+            </a>
+
+            <a href="recommendations.html">
+                Reduce Footprint
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="add-activity.html"
+                class="btn btn-primary">
+
+                + Add Activity
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container history-page">
+
+
+    <section class="page-heading">
+
+        <div>
+
+            <span class="section-tag">
+                YOUR ACTIVITY
+            </span>
+
+            <h1>
+                Carbon Footprint History
+            </h1>
+
+            <p>
+                Review the activities you have recorded and see
+                how much estimated CO₂e each activity contributes.
+            </p>
+
+        </div>
+
+
+        <a
+            href="add-activity.html"
+            class="btn btn-primary">
+
+            + Add Activity
+
+        </a>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="history-summary">
+
+
+        <div class="dashboard-card history-summary-card">
+
+            <span class="summary-label">
+                Total Activities
+            </span>
+
+            <strong id="historyActivityCount">
+                0
+            </strong>
+
+        </div>
+
+
+        <div class="dashboard-card history-summary-card">
+
+            <span class="summary-label">
+                Total Estimated CO₂e
+            </span>
+
+            <strong>
+
+                <span id="historyTotalEmission">
+                    0
+                </span>
+
+                kg
+
+            </strong>
+
+        </div>
+
+
+        <div class="dashboard-card history-summary-card">
+
+            <span class="summary-label">
+                Highest Category
+            </span>
+
+            <strong id="historyHighestCategory">
+                —
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- FILTER -->
+
+    <section class="history-controls dashboard-card">
+
+        <div>
+
+            <h2>
+                Filter Activities
+            </h2>
+
+            <p>
+                Choose a time period to view your records.
+            </p>
+
+        </div>
+
+
+        <div class="history-filters">
+
+            <button
+                class="filter-btn active"
+                data-filter="all">
+
+                All
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="today">
+
+                Today
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="week">
+
+                This Week
+
+            </button>
+
+
+            <button
+                class="filter-btn"
+                data-filter="month">
+
+                This Month
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- LIST -->
+
+    <section class="history-list-section">
+
+        <div class="history-list-header">
+
+            <h2>
+                Recorded Activities
+            </h2>
+
+            <p id="historyResultText">
+                Showing all activities
+            </p>
+
+        </div>
+
+
+        <div
+            id="historyList"
+            class="history-list">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <a href="index.html" class="logo">
+                🌱 <span>CarbonTrack</span>
+            </a>
+
+            <p>
+                Track your choices. Understand your impact.
+                Reduce your footprint.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="add-activity.html">
+                Add Activity
+            </a>
+
+            <a href="recommendations.html">
+                Reduce Footprint
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/calculations.js"></script>
+<script src="js/history.js"></script>
+
+</body>
+
+</html>

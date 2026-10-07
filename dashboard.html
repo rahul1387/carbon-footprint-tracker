@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | CarbonTrack</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+<header class="site-header">
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            🌱 <span>CarbonTrack</span>
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="dashboard.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="history.html">
+                History
+            </a>
+
+            <a href="add-activity.html">
+                Add Activity
+            </a>
+
+            <a href="recommendations.html">
+                Reduce Footprint
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="add-activity.html"
+                class="btn btn-primary">
+
+                + Add Activity
+
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- WELCOME -->
+
+    <section class="dashboard-welcome">
+
+        <div>
+
+            <span class="section-tag">
+                YOUR DASHBOARD
+            </span>
+
+            <h1>
+                Your Carbon Footprint
+            </h1>
+
+            <p>
+                Track your activities and understand your estimated
+                environmental impact.
+            </p>
+
+        </div>
+
+
+        <a
+            href="add-activity.html"
+            class="btn btn-primary">
+
+            + Add Activity
+
+        </a>
+
+    </section>
+
+
+    <!-- SUMMARY -->
+
+    <section class="dashboard-summary">
+
+
+        <div class="dashboard-card main-carbon-card">
+
+            <div class="card-label">
+                Total Estimated Footprint
+            </div>
+
+            <div class="carbon-value">
+
+                <span id="totalEmission">
+                    0
+                </span>
+
+                <small>
+                    kg CO₂e
+                </small>
+
+            </div>
+
+            <p>
+                Based on your recorded activities
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-label">
+                Activities
+            </div>
+
+            <div class="summary-number"
+                 id="activityCount">
+
+                0
+
+            </div>
+
+            <p>
+                recorded activities
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-label">
+                Biggest Contributor
+            </div>
+
+            <div class="summary-number"
+                 id="biggestContributor">
+
+                —
+
+            </div>
+
+            <p>
+                highest emission category
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- DASHBOARD GRID -->
+
+    <section class="dashboard-grid">
+
+
+        <!-- BREAKDOWN -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Emission Breakdown
+                    </h2>
+
+                    <p>
+                        Estimated footprint by category
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="donut-container">
+
+                <div
+                    class="donut-chart"
+                    id="donutChart">
+
+                    <div class="donut-center">
+
+                        <strong id="donutTotal">
+                            0
+                        </strong>
+
+                        <span>
+                            kg CO₂e
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="donut-legend">
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot transport"></span>
+
+                        <span>
+                            Transport
+                        </span>
+
+                        <strong id="transportTotal">
+                            0 kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot food"></span>
+
+                        <span>
+                            Food
+                        </span>
+
+                        <strong id="foodTotal">
+                            0 kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot shopping"></span>
+
+                        <span>
+                            Shopping
+                        </span>
+
+                        <strong id="shoppingTotal">
+                            0 kg
+                        </strong>
+
+                    </div>
+
+
+                    <div class="legend-item">
+
+                        <span class="legend-dot other"></span>
+
+                        <span>
+                            Other
+                        </span>
+
+                        <strong id="otherTotal">
+                            0 kg
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RECENT ACTIVITIES -->
+
+        <div class="dashboard-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <h2>
+                        Recent Activities
+                    </h2>
+
+                    <p>
+                        Your latest records
+                    </p>
+
+                </div>
+
+
+                <a href="history.html">
+                    View All
+                </a>
+
+            </div>
+
+
+            <div id="recentActivities"
+                 class="recent-activities">
+
+                <div class="empty-dashboard">
+
+                    <span>
+                        🌱
+                    </span>
+
+                    <p>
+                        No activities recorded yet.
+                    </p>
+
+                    <a
+                        href="add-activity.html"
+                        class="btn btn-primary">
+
+                        Add Activity
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REDUCE -->
+
+    <section class="reduce-panel">
+
+        <div>
+
+            <span class="section-tag">
+                TAKE ACTION
+            </span>
+
+            <h2>
+                Ready to reduce your footprint?
+            </h2>
+
+            <p>
+                Discover practical ways to lower your estimated
+                carbon emissions.
+            </p>
+
+        </div>
+
+
+        <a
+            href="recommendations.html"
+            class="btn btn-primary">
+
+            See Recommendations
+
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <a href="index.html" class="logo">
+                🌱 <span>CarbonTrack</span>
+            </a>
+
+            <p>
+                Track your choices. Understand your impact.
+                Reduce your footprint.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="add-activity.html">
+                Add Activity
+            </a>
+
+            <a href="history.html">
+                History
+            </a>
+
+            <a href="recommendations.html">
+                Reduce Footprint
+            </a>
+
+            <a href="goals.html">
+                Goals
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/calculations.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+
+</html>

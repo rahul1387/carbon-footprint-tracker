@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recommendations | Carbon Footprint Tracker</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .recommendation-hero {
+            padding: 55px 0 35px;
+            background: linear-gradient(135deg, #e8f7ef, #f7fbf8);
+        }
+
+        .recommendation-hero h1 {
+            margin-bottom: 10px;
+        }
+
+        .recommendation-hero p {
+            max-width: 720px;
+            color: var(--text);
+            font-size: 17px;
+        }
+
+        .recommendation-summary {
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .recommendation-stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 5px 18px rgba(20, 60, 40, 0.06);
+        }
+
+        .recommendation-stat .icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-stat h3 {
+            margin: 0 0 6px;
+            font-size: 15px;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .recommendation-stat strong {
+            display: block;
+            font-size: 24px;
+            color: var(--text-dark);
+        }
+
+        .recommendation-section {
+            padding: 20px 0 60px;
+        }
+
+        .section-heading {
+            margin-bottom: 22px;
+        }
+
+        .section-heading h2 {
+            margin-bottom: 6px;
+        }
+
+        .section-heading p {
+            color: var(--text);
+        }
+
+        .recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .recommendation-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 18px rgba(20, 60, 40, 0.05);
+        }
+
+        .recommendation-card.highlight {
+            border: 2px solid var(--green);
+        }
+
+        .recommendation-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .recommendation-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-light);
+            border-radius: 14px;
+            font-size: 25px;
+            flex-shrink: 0;
+        }
+
+        .recommendation-card h3 {
+            margin: 0 0 4px;
+        }
+
+        .recommendation-card .category-total {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .recommendation-card ul {
+            margin: 15px 0 0;
+            padding-left: 20px;
+        }
+
+        .recommendation-card li {
+            margin-bottom: 11px;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        .priority-badge {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 6px 11px;
+            border-radius: 20px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 55px 25px;
+            background: var(--surface);
+            border: 1px dashed var(--border);
+            border-radius: 18px;
+        }
+
+        .no-data .empty-icon {
+            font-size: 45px;
+            margin-bottom: 12px;
+        }
+
+        .no-data h2 {
+            margin-bottom: 8px;
+        }
+
+        .no-data p {
+            color: var(--text);
+            margin-bottom: 22px;
+        }
+
+        .action-section {
+            padding: 0 0 70px;
+        }
+
+        .action-box {
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            padding: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .action-box h2 {
+            margin: 0 0 8px;
+        }
+
+        .action-box p {
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .action-buttons .btn {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        .estimate-note {
+            margin-top: 25px;
+            padding: 15px 18px;
+            background: #f4f8f6;
+            border-radius: 12px;
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        @media (max-width: 800px) {
+            .recommendation-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .recommendation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .action-box {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .action-buttons {
+                width: 100%;
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .recommendation-hero {
+                padding: 35px 0 25px;
+            }
+
+            .recommendation-card {
+                padding: 20px;
+            }
+
+            .action-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="site-header">
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+            🌱 CarbonTrack
+        </a>
+
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="add-activity.html">Add Activity</a>
+            <a href="history.html">History</a>
+            <a href="recommendations.html" class="active">Recommendations</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="add-activity.html" class="btn btn-primary">
+                + Add Activity
+            </a>
+        </div>
+
+    </div>
+</header>
+
+
+<main>
+
+    <!-- HERO -->
+    <section class="recommendation-hero">
+        <div class="container">
+
+            <h1>🌱 Personalized Recommendations</h1>
+
+            <p>
+                Use your activity data to understand where your estimated
+                carbon footprint is highest and discover practical ways
+                to reduce it.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- SUMMARY -->
+    <section>
+        <div class="container">
+
+            <div class="recommendation-summary">
+
+                <div class="recommendation-stat">
+                    <div class="icon">🌍</div>
+                    <h3>Total Estimated Footprint</h3>
+                    <strong id="totalEmission">0 kg CO₂e</strong>
+                </div>
+
+                <div class="recommendation-stat">
+                    <div class="icon">📊</div>
+                    <h3>Highest Impact Category</h3>
+                    <strong id="highestCategory">No data</strong>
+                </div>
+
+                <div class="recommendation-stat">
+                    <div class="icon">📝</div>
+                    <h3>Activities Tracked</h3>
+                    <strong id="activityCount">0</strong>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- RECOMMENDATIONS -->
+    <section class="recommendation-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <h2>What You Can Do</h2>
+                <p>
+                    These suggestions are based on the activities you have
+                    recorded in your tracker.
+                </p>
+            </div>
+
+            <div id="recommendationContent"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACTION -->
+    <section class="action-section">
+
+        <div class="container">
+
+            <div class="action-box">
+
+                <div>
+                    <h2>Ready to reduce your footprint?</h2>
+                    <p>
+                        Track another activity and keep improving your estimate.
+                    </p>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="add-activity.html" class="btn">
+                        + Track Activity
+                    </a>
+
+                    <a href="dashboard.html" class="btn">
+                        View Dashboard
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer class="site-footer">
+    <div class="container">
+        <p>
+            CarbonTrack — Estimate your footprint, understand your impact,
+            and make better choices.
+        </p>
+    </div>
+</footer>
+
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/recommendations.js"></script>
+
+</body>
+</html>
