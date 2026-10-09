@@ -11,6 +11,7 @@
     <title>Dashboard | CarbonTrack</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
 </head>
 
@@ -43,10 +44,6 @@
 
             <a href="recommendations.html">
                 Reduce Footprint
-            </a>
-
-            <a href="goals.html">
-                Goals
             </a>
 
         </nav>
@@ -87,20 +84,99 @@
             </h1>
 
             <p>
-                Track your activities and understand your estimated
-                environmental impact.
+                Track your activities, analyse multi-day trends, and monitor your green/red emission signals.
             </p>
 
         </div>
 
 
-        <a
-            href="add-activity.html"
-            class="btn btn-primary">
+        <div class="dashboard-actions">
 
-            + Add Activity
+            <button
+                type="button"
+                id="loadSampleDataBtn"
+                class="btn btn-secondary"
+                title="Populate 3 days of realistic sample data to analyze green and red signals">
+                🌱 Load 3-Day Fake Data
+            </button>
 
-        </a>
+            <button
+                type="button"
+                id="resetDataBtn"
+                class="btn btn-ghost"
+                title="Clear all recorded activities">
+                🗑️ Reset Data
+            </button>
+
+            <a
+                href="add-activity.html"
+                class="btn btn-primary">
+                + Add Activity
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CARBON SIGNAL STATUS (TRAFFIC LIGHT) -->
+
+    <section class="signal-banner state-green" id="signalBanner">
+
+        <div class="signal-indicator-box">
+
+            <div class="signal-light-wrapper">
+                <span class="signal-light green" id="signalLight"></span>
+            </div>
+
+            <div class="signal-content">
+
+                <div class="signal-header-row">
+                    <span class="signal-pill green" id="signalPill">
+                        🟢 GREEN SIGNAL
+                    </span>
+                    <span class="signal-badge-sub" id="signalBadgeSub">
+                        ECO SAFE · TARGET ≤ 6.00 kg/day
+                    </span>
+                </div>
+
+                <h2 id="signalHeadline">
+                    Analyzing Carbon Footprint...
+                </h2>
+
+                <p id="signalDetail">
+                    Evaluating daily emission levels against sustainability targets.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="signal-meter-box">
+
+            <div class="signal-meter-header">
+                <span>Daily Eco Budget</span>
+                <strong id="signalMeterText">
+                    0.00 / 6.00 kg CO₂e
+                </strong>
+            </div>
+
+            <div class="signal-meter-track">
+                <div
+                    class="signal-meter-fill green"
+                    id="signalMeterFill"
+                    style="width: 0%;">
+                </div>
+            </div>
+
+            <div class="signal-legend-strip">
+                <span class="legend-chip green">🟢 Safe (≤6 kg)</span>
+                <span class="legend-chip amber">🟡 Moderate (6–10 kg)</span>
+                <span class="legend-chip red">🔴 Alert (&gt;10 kg)</span>
+            </div>
+
+        </div>
 
     </section>
 
@@ -128,7 +204,7 @@
 
             </div>
 
-            <p>
+            <p id="summarySubtext">
                 Based on your recorded activities
             </p>
 
@@ -138,7 +214,7 @@
         <div class="dashboard-card">
 
             <div class="card-label">
-                Activities
+                Recorded Activities
             </div>
 
             <div class="summary-number"
@@ -149,7 +225,7 @@
             </div>
 
             <p>
-                recorded activities
+                logged across categories
             </p>
 
         </div>
@@ -171,6 +247,131 @@
             <p>
                 highest emission category
             </p>
+
+        </div>
+
+
+        <div class="dashboard-card">
+
+            <div class="card-label">
+                Signal Performance
+            </div>
+
+            <div class="summary-number"
+                 id="signalPerformance">
+
+                —
+
+            </div>
+
+            <p id="signalPerformanceDesc">
+                green vs red signal ratio
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- 3-DAY CARBON ANALYSIS & SIGNALS -->
+
+    <section class="analysis-section" id="analysisSection">
+
+        <div class="panel-header">
+
+            <div>
+
+                <span class="section-tag">
+                    MULTI-DAY INTELLIGENCE
+                </span>
+
+                <h2>
+                    3-Day Carbon Analysis & Daily Signals
+                </h2>
+
+                <p>
+                    Day-by-day performance analysis highlighting green (sustainable) vs red (alert) emission signals
+                </p>
+
+            </div>
+
+            <div class="analysis-badge" id="analysisDateRange">
+                3-Day Overview
+            </div>
+
+        </div>
+
+
+        <!-- 3 DAILY CARDS -->
+
+        <div class="daily-signals-grid" id="dailySignalsGrid">
+            <!-- Dynamically populated by dashboard.js -->
+        </div>
+
+
+        <!-- ANALYTICAL INSIGHTS & HOTSPOTS -->
+
+        <div class="analysis-insights-card">
+
+            <div class="insights-header">
+
+                <div class="insights-title">
+
+                    <span class="insights-icon">
+                        📊
+                    </span>
+
+                    <div>
+                        <h3>
+                            3-Day Carbon Data Analysis & Findings
+                        </h3>
+
+                        <p>
+                            Automated breakdown of emission hotspots, reductions, and behavior trends
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="insights-stats-row">
+
+                    <div class="stat-pill">
+                        <span>3-Day Total</span>
+                        <strong id="insightsTotal">
+                            0 kg
+                        </strong>
+                    </div>
+
+                    <div class="stat-pill">
+                        <span>Daily Average</span>
+                        <strong id="insightsAvg">
+                            0 kg/day
+                        </strong>
+                    </div>
+
+                    <div class="stat-pill green">
+                        <span>Green Days</span>
+                        <strong id="insightsGreenDays">
+                            0 / 3
+                        </strong>
+                    </div>
+
+                    <div class="stat-pill red">
+                        <span>Red Days</span>
+                        <strong id="insightsRedDays">
+                            0 / 3
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="insights-list" id="insightsList">
+                <!-- Dynamically populated by dashboard.js -->
+            </div>
 
         </div>
 
@@ -418,10 +619,6 @@
 
             <a href="recommendations.html">
                 Reduce Footprint
-            </a>
-
-            <a href="goals.html">
-                Goals
             </a>
 
         </div>

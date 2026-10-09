@@ -1,0 +1,21 @@
+{
+  "name": "carbon-footprint-tracker",
+  "version": "1.0.0",
+  "description": "Personal carbon footprint tracker - static frontend with an Express + local MongoDB backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "seed": "node seed-3days.js"
+  },
+  "keywords": [
+    "carbon-footprint",
+    "express",
+    "mongodb"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongodb": "^6.16.0"
+  }
+}

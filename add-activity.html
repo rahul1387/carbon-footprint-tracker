@@ -12,6 +12,7 @@
     <title>Add Activity | CarbonTrack</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
 
 </head>
 
@@ -48,10 +49,6 @@
 
             <a href="recommendations.html">
                 Reduce Footprint
-            </a>
-
-            <a href="goals.html">
-                Goals
             </a>
 
         </nav>
@@ -199,7 +196,7 @@
                         placeholder="Enter quantity">
 
                     <span id="quantityUnit">
-                        km
+                        kg
                     </span>
 
                 </div>
@@ -213,14 +210,29 @@
 
             <div class="form-group">
 
-                <label for="activityDate">
+                <label>
                     Date
                 </label>
 
-                <input
-                    type="date"
-                    id="activityDate"
-                    class="form-input">
+
+                <div
+                    class="date-display"
+                    id="activityDate">
+
+                    <span class="date-display-icon">
+                        📅
+                    </span>
+
+                    <span id="activityDateText">
+                        Today
+                    </span>
+
+                </div>
+
+
+                <small id="dateInfo">
+                    Set automatically to today's date.
+                </small>
 
             </div>
 

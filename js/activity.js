@@ -57,15 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // ========================================
-// DEFAULT DATE
+// DATE (AUTOMATIC - ALWAYS TODAY)
 // ========================================
 
-function setDefaultDate() {
-
-    const dateInput =
-        document.getElementById("activityDate");
-
-    if (!dateInput) return;
+function getTodayDateString() {
 
     const today =
         new Date();
@@ -84,8 +79,34 @@ function setDefaultDate() {
         ).padStart(2, "0");
 
 
-    dateInput.value =
-        `${year}-${month}-${day}`;
+    return `${year}-${month}-${day}`;
+}
+
+
+function setDefaultDate() {
+
+    const display =
+        document.getElementById(
+            "activityDateText"
+        );
+
+    if (!display) return;
+
+
+    const readable =
+        new Date().toLocaleDateString(
+            "en-IN",
+            {
+                day: "numeric",
+                month: "short",
+                year: "numeric"
+            }
+        );
+
+
+    display.textContent =
+        `Today · ${readable}`;
+
 }
 
 
@@ -282,9 +303,7 @@ function calculateActivity() {
         );
 
     const date =
-        document.getElementById(
-            "activityDate"
-        ).value;
+        getTodayDateString();
 
 
     if (!type) {
@@ -301,16 +320,6 @@ function calculateActivity() {
 
         alert(
             "Please enter a quantity greater than zero."
-        );
-
-        return;
-    }
-
-
-    if (!date) {
-
-        alert(
-            "Please select a date."
         );
 
         return;
@@ -503,7 +512,7 @@ function displayCalculation(result) {
 // SAVE
 // ========================================
 
-function saveCalculatedActivity() {
+async function saveCalculatedActivity() {
 
     if (!calculatedActivity) {
 
@@ -515,7 +524,7 @@ function saveCalculatedActivity() {
     }
 
 
-    addActivity(
+    await addActivity(
         calculatedActivity
     );
 

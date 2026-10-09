@@ -5,11 +5,11 @@
 let currentFilter = "all";
 
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
 
     initializeHistoryFilters();
 
-    loadHistory();
+    await loadHistory();
 
 });
 
@@ -30,7 +30,7 @@ function initializeHistoryFilters() {
 
         button.addEventListener(
             "click",
-            () => {
+            async () => {
 
                 buttons.forEach(btn => {
 
@@ -50,7 +50,7 @@ function initializeHistoryFilters() {
                     button.dataset.filter;
 
 
-                loadHistory();
+                await loadHistory();
 
             }
         );
@@ -64,10 +64,10 @@ function initializeHistoryFilters() {
 // LOAD
 // ========================================
 
-function loadHistory() {
+async function loadHistory() {
 
     const activities =
-        getActivities();
+        await getActivities();
 
 
     const filtered =
@@ -423,12 +423,22 @@ function createHistoryItem(
                     </h3>
 
                     <span class="history-category">
-
                         ${escapeHtml(
                             activity.category ||
                             "Other"
                         )}
+                    </span>
 
+                    <span class="activity-signal ${
+                        Number(activity.emission || 0) > 3.0
+                            ? 'red'
+                            : (Number(activity.emission || 0) > 1.5 ? 'amber' : 'green')
+                    }">
+                        ${
+                            Number(activity.emission || 0) > 3.0
+                                ? '🔴 High Impact'
+                                : (Number(activity.emission || 0) > 1.5 ? '🟡 Moderate' : '🟢 Eco')
+                        }
                     </span>
 
                 </div>
@@ -488,7 +498,7 @@ function createHistoryItem(
 // DELETE
 // ========================================
 
-function deleteHistoryActivity(
+async function deleteHistoryActivity(
     id
 ) {
 
@@ -503,9 +513,9 @@ function deleteHistoryActivity(
     }
 
 
-    deleteActivity(id);
+    await deleteActivity(id);
 
-    loadHistory();
+    await loadHistory();
 
 }
 

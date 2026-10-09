@@ -1,10 +1,10 @@
-document.addEventListener("DOMContentLoaded", () => {
-    loadRecommendations();
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadRecommendations();
 });
 
 
-function loadRecommendations() {
-    const activities = getActivities();
+async function loadRecommendations() {
+    const activities = await getActivities();
 
     updateSummary(activities);
 
